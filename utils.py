@@ -43,11 +43,9 @@ def read_xml(path):
 
 def get_data(path):
     path_to_truth = os.path.join(path, 'truth.txt')
-    truth = read_text(path_to_truth).split('\n')[:-1]
-    print(truth)
+    truth = read_text(path_to_truth).split('\n')
     data = []
     for t in truth:
-        print(t.split(':::'))
         file , label  = t.split(':::')
         tweets = read_xml(os.path.join(path, file+'.xml'))
         #for tweet in tweets:
