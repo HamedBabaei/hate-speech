@@ -14,7 +14,7 @@ class LDSE:
     def transform(self, X, C1=False):
         vectors = self.vectorizer.transform(X).toarray()
         features = {index:[[], [], []] for index, _ in enumerate(X)}
-        for index_d, vector in tqdm(enumerate(vectors)):
+        for index_d, vector in enumerate(vectors):
             terms_d = [self.names[index_t] for index_t, W in enumerate(vector) if W != 0]
             features[index_d][0] = [self.embedding[term]['Wdt0'] for term in terms_d]
             features[index_d][1] = [self.embedding[term]['Wdt1'] for term in terms_d]
