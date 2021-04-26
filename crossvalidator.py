@@ -1,6 +1,7 @@
 from sklearn.model_selection import StratifiedKFold
 from sklearn.metrics import accuracy_score
 from hatter import Hatter
+import numpy as np
 
 def get_split_data(X, Y, indexes):
     X_split, y_split = [], []
