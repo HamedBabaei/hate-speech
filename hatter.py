@@ -35,7 +35,7 @@ class Hatter:
         
         F0 = self.ldse_model.transform([X], C1=False)
         F1 = self.ldse_model.transform([X], C1=True)
-        F2 = self.bert_model.transform([X])
+        F2 = self.bert_transformer.transform([X])
 
         predicts[self.label0_model.predict(F0)[0]] += 1
         predicts[self.label1_model.predict(F1)[0]] += 1
