@@ -23,9 +23,9 @@ class Hatter:
         label1_representation = self.ldse_model.transform(X, C1=True)
         bert_representation   = self.bert_transformer.transform(X)
 
-        self.label0_model.fit(label0_representation, y)
-        self.label1_model.fit(label1_representation, y)
-        self.bert_model.fit(bert_representation, y)
+        self.label0_model.fit(label0_representation, Y)
+        self.label1_model.fit(label1_representation, Y)
+        self.bert_model.fit(bert_representation, Y)
 
     def predict(self, X):
         return [self.predict_single(x) for x in X]
