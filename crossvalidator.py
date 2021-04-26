@@ -19,7 +19,7 @@ def cross_validator(X, Y, cv, ngram_range, lang):
         X_test, y_test = get_split_data(X, Y, test_index)
         model = Hatter(ngram_range=ngram_range, lang=lang)
         model.fit(X_train, y_train)
-        preds = [model.predict_single(x) for x in X_test]
+        preds = [str(model.predict_single(x)) for x in X_test]
         acc = accuracy_score(y_test, preds)
         print("FOLD-{}: Accuracy:{}".format(fold, acc))
         print("----------------------------------------------")
