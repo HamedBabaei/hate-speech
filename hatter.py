@@ -40,4 +40,4 @@ class Hatter:
         predicts[self.label1_model.predict(F1)[0]] += 1
         predicts[self.bert_model.predict(F2)[0]] += 1
         
-        return '0' if predicts['0'] > predicts['1'] else '1'
+        return 0 if predicts['0'] > predicts['1'] else 1
