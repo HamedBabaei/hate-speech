@@ -4,7 +4,8 @@ import os
 import numpy as np
 import utils
 from tqdm import tqdm 
-from hatter import Hatter 
+from hatter import Hatter
+
 def get_args():
     parser = argparse.ArgumentParser()
     parser.add_argument('-i', '--input', help="path to dataset directory")
@@ -30,7 +31,11 @@ def detector():
     x_en = [X.replace("<TWEET>", ' \n ') for X in tqdm(x_en)]
     x_es = [X.replace("<TWEET>", ' \n ') for X in tqdm(x_es)]
 
-    Model = 
+    en_hatter = Hatter(ngram_range=(2, 3), lang='en')
+    en_hatter.fit(x_en, y_en)
+
+    es_hatter = Hatter(ngram_range=(3, 4), lang='es')
+    es_hatter.fit(x_es, y_es)
 
     utils.mkdir(out_dir)
     for language_dir in os.listdir(input_dir):
@@ -41,10 +46,9 @@ def detector():
             print(language_dir , "::::Working on user: ", user )
             user_tweets = '\n '.join(utils.read_xml(os.path.join(input_dir_path , user)))
             if language_dir == 'en':
-                pred = en_predictor([user_tweets], en_model, en_sk, en_ldsa, 
-                                     en_tfidf_vectorizer, en_feature_names)
+                pred = en_hatter.predict_single(user_tweets)
             else:
-                pred = es_model.predict([user_tweets])
+                pred = es_hatter.predict_single(user_tweets)
             utils.save_xml(os.path.join(out_dir_path, user) , user , str(language_dir) , str(pred[0]) )
             print("Results saved to " , str(os.path.join(out_dir_path, user)))
             print("-------------------------------------------------")
