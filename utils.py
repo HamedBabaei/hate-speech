@@ -6,7 +6,7 @@ import re
 import pickle
 from preprocessing import Preprocessing
 import xml.etree.cElementTree as ET
-
+from gensim.summarization.summarizer import summarize
 
 cleaner=Preprocessing(lowercasing=True, number_removing=True, punctuation_removing=True, whitespaces_removing=True,
                       stopwords_removing=False, spell_checking=False, HTML_removing=True, URL_removing=True,
@@ -64,8 +64,7 @@ def remove_specials(tweet):
 def mkdir(path):
     if not os.path.exists(path):
         os.mkdir(path)
-
-
+        
 def save_xml(path , user , l , t ):
     author = ET.Element("author" , id=str(user)[:-4], lang=l, type=t)
     tree = ET.ElementTree(author)
@@ -77,3 +76,7 @@ def cleaning(tweets):
     tweets = tweets.split('\n')
     tweets = [cleaner.clean(tweet, lsts=lsts) for tweet in tweets]
     return '. '.join(tweets)
+
+def get_summary(text, ratio=0.1):
+    summary = summarize(text, ratio = ratio)
+    return summary
