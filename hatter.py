@@ -3,7 +3,7 @@ from sklearn.svm import SVC
 from roberta import Roberta
 from ldse import LDSE
 
-class Model:
+class Hatter:
     def __init__(self, ngram_range, lang='en', summary_ratio=0.1):
         vectorizer = TfidfVectorizer(ngram_range=ngram_range, 
                                      analyzer='char',
