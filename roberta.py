@@ -15,7 +15,7 @@ class Roberta:
             self.roberta_model = AutoModelWithLMHead.from_pretrained("skimai/spanberta-base-cased")
     
     def transform(self, X):
-        return [self.transform_sample(X, ratio=self.summary_ratio) for X in X]
+        return [self.transform_sample(x, ratio=self.summary_ratio) for x in X]
 
     def transform_sample(self, text, ratio):
         try:
