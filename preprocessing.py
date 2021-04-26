@@ -2,10 +2,10 @@ import re
 import string
 from nltk.tokenize import word_tokenize
 import nltk
-#nltk.download('punkt')
+nltk.download('punkt')
 from nltk.corpus import stopwords
-#nltk.download('stopwords')
-#nltk.download('wordnet')
+nltk.download('stopwords')
+nltk.download('wordnet')
 #from spellchecker import SpellChecker
 from nltk.stem import PorterStemmer, WordNetLemmatizer
 
