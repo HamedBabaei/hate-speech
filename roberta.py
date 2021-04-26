@@ -2,7 +2,6 @@ from transformers import RobertaTokenizer, RobertaModel
 from transformers import AutoTokenizer, AutoModelWithLMHead
 import utils
 import numpy as np
-from tqdm import tqdm
 
 class Roberta:
 
@@ -16,7 +15,7 @@ class Roberta:
             self.roberta_model = AutoModelWithLMHead.from_pretrained("skimai/spanberta-base-cased")
     
     def transform(self, X):
-        return [self.transform_sample(X, ratio=self.summary_ratio) for X in tqdm(X)]
+        return [self.transform_sample(X, ratio=self.summary_ratio) for X in X]
 
     def transform_sample(self, text, ratio):
         try:
