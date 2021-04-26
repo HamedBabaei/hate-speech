@@ -2,6 +2,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.svm import SVC
 from roberta import Roberta
 from ldse import LDSE
+import numpy as np
 
 class Hatter:
     def __init__(self, ngram_range, lang='en', summary_ratio=0.1):
@@ -16,8 +17,8 @@ class Hatter:
         self.bert_transformer = Roberta(lang=lang, summary_ratio=summary_ratio)
         self.bert_model   = SVC(C=0.1, kernel='linear')        
 
-    def fit(self, X, y, C=['1', '0']):
-        self.ldse_model.fit(X, y, C=C)
+    def fit(self, X, Y, C=['1', '0']):
+        self.ldse_model.fit(X, Y, C=C)
         label0_representation = self.ldse_model.transform(X, C1=False)
         label1_representation = self.ldse_model.transform(X, C1=True)
         bert_representation   = self.bert_transformer.transform(X)

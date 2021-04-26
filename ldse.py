@@ -22,7 +22,7 @@ class LDSE:
                 features[index_d][2] = self.get_distribution(features[index_d][1])
             else:
                 features[index_d][2] = self.get_distribution(features[index_d][0])
-        return features
+        return [F[2] for _,F in features.items()]
     
     def get_ldse(self, matrix, Y, C):
         ldse = {}
