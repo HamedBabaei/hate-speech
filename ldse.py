@@ -27,7 +27,7 @@ class LDSE:
     def get_ldse(self, matrix, Y, C):
         ldse = {}
         for index_t, t in tqdm(enumerate(self.names)):
-            ldsa[t] = {'index_t':index_t}
+            ldse[t] = {'index_t':index_t}
             Wdt = matrix[:, index_t]
             wdtc = {c:0 for c in C}
             for index_d, y in enumerate(Y):
