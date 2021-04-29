@@ -49,7 +49,7 @@ def detector():
                 pred = en_hatter.predict_single(user_tweets)
             else:
                 pred = es_hatter.predict_single(user_tweets)
-            utils.save_xml(os.path.join(out_dir_path, user) , user , str(language_dir) , str(pred[0]) )
+            utils.save_xml(os.path.join(out_dir_path, user) , user , str(language_dir) , str(pred))
             print("Results saved to " , str(os.path.join(out_dir_path, user)))
             print("-------------------------------------------------")
 
