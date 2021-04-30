@@ -4,7 +4,7 @@ import os
 import numpy as np
 import utils
 from tqdm import tqdm 
-from hatter import Hatter
+from hater import Hater
 
 def get_args():
     parser = argparse.ArgumentParser()
@@ -31,11 +31,11 @@ def detector():
     x_en = [X.replace("<TWEET>", ' \n ') for X in tqdm(x_en)]
     x_es = [X.replace("<TWEET>", ' \n ') for X in tqdm(x_es)]
 
-    en_hatter = Hatter(ngram_range=(2, 3), lang='en')
-    en_hatter.fit(x_en, y_en)
+    en_hater = Hater(ngram_range=(2, 3), lang='en')
+    en_hater.fit(x_en, y_en)
 
-    es_hatter = Hatter(ngram_range=(3, 4), lang='es')
-    es_hatter.fit(x_es, y_es)
+    es_hater = Hater(ngram_range=(3, 4), lang='es')
+    es_hater.fit(x_es, y_es)
 
     utils.mkdir(out_dir)
     for language_dir in os.listdir(input_dir):
@@ -46,9 +46,9 @@ def detector():
             print(language_dir , "::::Working on user: ", user )
             user_tweets = '\n '.join(utils.read_xml(os.path.join(input_dir_path , user)))
             if language_dir == 'en':
-                pred = en_hatter.predict_single(user_tweets)
+                pred = en_hater.predict_single(user_tweets)
             else:
-                pred = es_hatter.predict_single(user_tweets)
+                pred = es_hater.predict_single(user_tweets)
             utils.save_xml(os.path.join(out_dir_path, user) , user , str(language_dir) , str(pred))
             print("Results saved to " , str(os.path.join(out_dir_path, user)))
             print("-------------------------------------------------")

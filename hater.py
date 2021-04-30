@@ -4,7 +4,7 @@ from roberta import Roberta
 from ldse import LDSE
 import numpy as np
 
-class Hatter:
+class Hater:
     def __init__(self, ngram_range, lang='en', summary_ratio=0.1):
         vectorizer = TfidfVectorizer(ngram_range=ngram_range, 
                                      analyzer='char',

@@ -1,6 +1,6 @@
 from sklearn.model_selection import StratifiedKFold
 from sklearn.metrics import accuracy_score
-from hatter import Hatter
+from hater import Hater
 import numpy as np
 
 def get_split_data(X, Y, indexes):
@@ -18,7 +18,7 @@ def cross_validator(X, Y, cv, ngram_range, lang):
         fold += 1
         X_train, y_train = get_split_data(X, Y, train_index)
         X_test, y_test = get_split_data(X, Y, test_index)
-        model = Hatter(ngram_range=ngram_range, lang=lang)
+        model = Hater(ngram_range=ngram_range, lang=lang)
         model.fit(X_train, y_train)
         preds = [str(model.predict_single(x)) for x in X_test]
         acc = accuracy_score(y_test, preds)
