@@ -7,7 +7,7 @@ def get_args():
     parser = argparse.ArgumentParser()
     parser.add_argument('-t', '--train', help="path to train directory")
     args = parser.parse_args()
-    if args.input is None and args.output is None:
+    if args.train is None:
         parser.print_usage()
         exit()
     return args
