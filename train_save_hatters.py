@@ -2,6 +2,7 @@ import argparse
 import os
 import utils
 from hater import Hater
+from tqdm import tqdm
 
 def get_args():
     parser = argparse.ArgumentParser()
