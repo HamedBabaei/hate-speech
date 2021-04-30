@@ -30,6 +30,6 @@ en_hater.fit(x_en, y_en)
 es_hater = Hater(ngram_range=(3, 4), lang='es')
 es_hater.fit(x_es, y_es)
 
-utils.save_pkl("eg_hater.sav", en_hater)
+utils.save_pkl("en_hater.sav", en_hater)
 
 utils.save_pkl("es_hater.sav", es_hater)
